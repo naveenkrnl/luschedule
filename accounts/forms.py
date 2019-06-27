@@ -50,7 +50,7 @@ class UserCreationForm(forms.ModelForm):
     name = forms.CharField(label='Password', widget=forms.TextInput(attrs=
                                 {
                                     'class':'form-control',
-                                    'placeholder' : 'A Unique Username to identify you !',
+                                    'placeholder' : 'Your Full Name',
                                 }))
     rollno = forms.CharField(label='Password', widget=forms.TextInput(attrs=
                                 {
