@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'css/sch.css' %}" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'css/navbar.css' %}" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'css/navbar2.css' %}" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/css?family=Barriecito|Indie+Flower&display=swap" rel="stylesheet">
+
+{% endblock css %}
+{% block content %}
+
+{% include 'navbar.html' %}
+{% include 'navbar2.html' %}
+    <div class="row mt-5">
+        <div class='col-1'>
+        </div>
+        <div class='col-5'>
+            <h3 style="margin-bottom: 40px !important;font-family: 'Barriecito', cursive; letter-spacing: 2px;">Current Goals :</h3>
+            {% for goal in goals %}
+            <hr/>
+            <div class="row">
+                <div class="col-6">
+                <h4 style="font-family: 'Indie Flower', cursive; font-weight: bolder; letter-spacing: 1px;">{{goal.goal_text}}</h4><br/>
+                    </div>
+            <div class="col-6">
+            <form method="POST">
+                {% csrf_token %}
+            <input type="hidden" name="goal_t1" id="goal_t1" value="{{ goal.goal_text }}">
+            <input class='btn btn-outline-danger btn-sm float-right' type='submit' value='Delete' />         
+            </form>
+            </div>
+            </div>
+            <!-- <hr/> -->
+            {% endfor %}
+        </div>
+        <div class='col-5 '>
+                <h3 style="margin-bottom: 40px !important;font-family: 'Barriecito', cursive; letter-spacing: 2px;">ADD New Goals :</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.goal_text1 }}<br/>
+                    {{ form.goal_text2 }}<br/>
+                    {{ form.goal_text3 }}<br/>
+                    {{ form.goal_text4 }}<br/>
+                    {{ form.goal_text5 }}<br/>
+                    <input class='btn btn-outline-primary float-right' type='submit' value='Add New Goals' />         
+                </form>
+        </div>
+        <div class='col-1'>
+        </div>
+
+        </div>
+
+   
+{% endblock content %}
+    {% block script %}
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+    $('.menu, .overlay').click(function () {
+        $('.menu').toggleClass('clicked');
+        
+        $('#nav').toggleClass('show');
+        
+    });
+    </script>
+    {% endblock script %}

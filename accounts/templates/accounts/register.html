@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock css %}
+{% block content %}
+      {% include 'accounts/sidebar.html' %}
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="register-form">
+               <form method='POST'>
+                   {% csrf_token %}
+                  <div class="form-group">
+                     <label>User Name</label><br/>
+                    {{ form.username }}    
+                    {{ form.username.errors }}
+                    </div>
+                    <div class="form-group">
+                     <label>Name</label><br/>
+                    {{ form.name }}  
+                    {{ form.name.errors }}
+                     </div> 
+                     <div class="form-group">
+                        <label>Roll Number</label><br/>
+                       {{ form.rollno }}    
+                       {{ form.rollno.errors }}
+                     </div>   
+                     <div class="form-group">
+                        <label>Branch</label><br/>
+                       {{ form.branch }}    
+                       {{ form.branch.errors }}
+                     </div>                             
+                     <div class="form-group">
+                        <label>Semester</label><br/>
+                       {{ form.semester }}    
+                       {{ form.semester.errors }}
+                     </div> 
+                     <div class="form-group">
+                            <label>Email</label><br/>
+                           {{ form.email }}  
+                           {{ form.email.errors }}
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label><br/>
+                        {{ form.password1 }}    
+                    </div>
+                  <div class="form-group">
+                     <label>Confirm Password</label><br/>
+                     {{ form.password2 }}    
+                    </div>
+                  <button type="submit" class="btn btn-black">Register</button>
+                  <a href="{% url 'login' %}"><button type="button" class="btn btn-secondary">Login</button></a>
+               </form>
+            </div>
+         </div>
+      </div>
+{% endblock %}

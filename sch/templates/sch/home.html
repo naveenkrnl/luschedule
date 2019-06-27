@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'css/sch.css' %}" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'css/navbar.css' %}" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'css/navbar2.css' %}" rel="stylesheet" id="bootstrap-css">
+
+{% endblock css %}
+{% block content %}
+
+{% include 'navbar.html' %}
+{% include 'navbar2.html' %}
+
+    <main class="container pt-5">
+        <div class="card mb-5">
+            <div class="card-header">Week Goals</div>
+            <div class="card-block p-0">
+                <table class="table table-bordered m-0">
+                    <thead class="" style="margin: auto">
+                        <tr>
+                            <th>Goals</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thurday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                            <th>Efficiency</th>                            
+                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form method="POST">
+                        {% csrf_token %}
+                        {{ formset.management_form }}
+                            {% for goal in goals %}
+                            <tr>
+                            <td>{{ goal.goal_text }}</td>
+
+
+                                <input type="hidden" name="form-{{ forloop.counter0 }}-goal_t" id="id_form-{{ forloop.counter0 }}-goal_t" value="{{ goal.goal_text }}">
+                                <td align="center">
+                                {% if goal.monday %}
+                                <p style='color:green; font-weight:bold'>complete</p>
+                                {% else %}
+                                <div class="wrapper form-check form-check-inline" style="margin:auto">
+                                    <input type="checkbox" name="form-{{ forloop.counter0 }}-monday" id="id_form-{{ forloop.counter0 }}-monday">                                </div>
+                                {% endif %}
+                                </td>
+                                <td align="center">
+                                {% if goal.tuesday %}
+                                <p style='color:green; font-weight:bold'>complete</p>
+                                {% else %}
+                                <div class="wrapper form-check form-check-inline" style="margin:auto">
+                                    <input type="checkbox" name="form-{{ forloop.counter0 }}-tuesday" id="id_form-{{ forloop.counter0 }}-tuesday">                                </div>
+                                </div>
+                                {% endif %}
+                                </td>
+                                <td align="center">
+                                {% if goal.wednesday %}
+                                <p style='color:green; font-weight:bold'>complete</p>
+                                {% else %}
+                                <div class="wrapper form-check form-check-inline" style="margin:auto">
+                                    <input type="checkbox" name="form-{{ forloop.counter0 }}-wednesday" id="id_form-{{ forloop.counter0 }}-wednesday">                                </div>
+                                </div>
+                                {% endif %}
+                                </td>     
+                                <td align="center">                               
+                                {% if goal.thursday %}
+                                <p style='color:green; font-weight:bold'>complete</p>
+                                {% else %}
+                                <div class="wrapper form-check form-check-inline" style="margin:auto">
+                                    <input type="checkbox" name="form-{{ forloop.counter0 }}-thursday" id="id_form-{{ forloop.counter0 }}-thursday">                                </div>
+                                </div>
+                                {% endif %}
+                                </td>    
+                                <td align="center">                            
+                                {% if goal.friday %}
+                                <p style='color:green; font-weight:bold'>complete</p>
+                                {% else %}
+                                <div class="wrapper form-check form-check-inline" style="margin:auto">
+                                    <input type="checkbox" name="form-{{ forloop.counter0 }}-friday" id="id_form-{{ forloop.counter0 }}-friday">                                </div>
+                                </div>
+                                {% endif %}
+                                </td>    
+                                <td align="center">                            
+                                {% if goal.saturday %}
+                                <p style='color:green; font-weight:bold'>complete</p>
+                                {% else %}
+                                <div class="wrapper form-check form-check-inline" style="margin:auto">
+                                    <input type="checkbox" name="form-{{ forloop.counter0 }}-saturday" id="id_form-{{ forloop.counter0 }}-saturday">                                </div>
+                                </div>
+                                {% endif %}
+                                </td>    
+                                <td align="center">                            
+                                {% if goal.sunday %}
+                                <p style='color:green; font-weight:bold'>complete</p>
+                                {% else %}
+                                <div class="wrapper form-check form-check-inline" style="margin:auto">
+                                    <input type="checkbox" name="form-{{ forloop.counter0 }}-sunday" id="id_form-{{ forloop.counter0 }}-sunday">                                </div>
+                                </div>
+                                {% endif %}
+                                </td>   
+                            <td align="center"> 
+ 
+                                {{goal.efficiency}}%
+                            </td>
+                               </tr>   
+                                {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-footer p-4 float-right">
+                <div class="row">
+                    <div class="col-6">
+
+                    </div>
+                    <div class="col-6">
+                            <input class="btn float-right btn-outline-info" type="submit" value="Save">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+   
+    {% endblock content %}
+    {% block script %}
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+    $('.menu, .overlay').click(function () {
+        $('.menu').toggleClass('clicked');
+        
+        $('#nav').toggleClass('show');
+        
+    });
+    </script>
+    {% endblock script %}

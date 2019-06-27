@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock css %}
+{% block content %}
+   {% include 'accounts/sidebar.html' %}
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form method='POST'>
+                   {% csrf_token %}
+                  <div class="form-group">
+                      {{ form.errors }}
+                     <label>User Name</label><br/>
+                    {{ form.query }}    
+                    </div>
+                  <div class="form-group">
+                     <label>Password</label><br/>
+                     {{ form.password }}    
+                    </div>
+                  <button type="submit" class="btn btn-black">Login</button>
+                  <a  href="{% url 'register' %}"><button type="button" class="btn btn-secondary">Register</button></a>
+               </form>
+            </div>
+         </div>
+      </div>
+{% endblock %}
