@@ -3,7 +3,11 @@
 Luschedule - A complete schedule manager for your daily lifestyle.
     Achieve your daily goals, mark them, calculate efficiency, etc.
 <br/>
-
+<p align="left">
+<img src="https://img.shields.io/pypi/djversions/djangorestframework.svg?label=django&logo=django&style=flat-square">
+<img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=102">
+<img src="https://img.shields.io/github/license/naveenkrnl/luschedule.svg">
+</p>
 
 
 
