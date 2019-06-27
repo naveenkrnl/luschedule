@@ -3,18 +3,19 @@
 Luschedule - A complete schedule manager for your daily lifestyle.
     Achieve your daily goals, mark them, calculate efficiency, etc.
 <br/>
-<img src="https://raw.githubusercontent.com/naveenkrnl/luschedule/master/static_my_proj/img/screenshot.png" class="img-thumbnail" alt="codewithnav">
 
 
 
 
 
+
+#Usage
 Visit Here to use the project - https://luschedule.herokuapp.com/
 <br/>
 As for Now , the app is limited to my fellow jmit mates.
 To use it clone and use it for you :-
 
-
+#Use On Your Computer
 To download the project right on your computer Download the zip file
 
 Create a virtualenv using
@@ -32,3 +33,9 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 </pre>
+
+#Sample
+<img src="https://raw.githubusercontent.com/naveenkrnl/luschedule/master/static_my_proj/img/screenshot.png" class="img-thumbnail" alt="codewithnav">
+
+#LICENSE
+MIT License © <a href="https://github.com/naveenkrnl">Naveen Arora</a>
